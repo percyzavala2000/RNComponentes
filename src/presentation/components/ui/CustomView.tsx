@@ -9,10 +9,10 @@ type CustomViewProps = {
     
   }
 
-export const CustomView = ({style,children,}:CustomViewProps) => {
+export const CustomView = ({style,children,margin=false}:CustomViewProps) => {
 // render
   return (
-    <View style={[globalStyles.mainContainer,style]} >
+    <View style={[globalStyles.mainContainer,margin? globalStyles.globalMargin:null,style]} >
      {children}
     </View>
   )
