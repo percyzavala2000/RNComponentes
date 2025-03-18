@@ -26,7 +26,7 @@ Además, se utiliza el paquete react-navigation para gestionar la navegación en
 
 ## Instalación
 
-1. Clona el repositorio utilizando ` `     
+1. Clona el repositorio utilizando `git clone https://github.com/percyzavala2000/RNComponentes.git`     
 2. Instala las dependencias utilizando `npm install` o `yarn install`
 3. Ejecuta la aplicación utilizando `npx react-native run-android` o `npx react-native run-ios`
 
