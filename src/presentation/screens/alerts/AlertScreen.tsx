@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, Alert } from 'react-native'
 import { Button } from '../../components/ui/Button';
 import { CustomView } from '../../components/ui/CustomView';
 import { Title } from '../../components/ui/Title';
 import { globalStyles } from '../../../config/theme/theme';
 import { showPrompt } from '../../../config/adapters/prompt.adapter';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const AlertScreen = () => {
+    const{isDark}=useContext(ThemeContext)
   const createTwoButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
       {
@@ -15,7 +17,7 @@ export const AlertScreen = () => {
         style: 'destructive',
       },
       {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ],{cancelable:true});
+    ],{cancelable:true,userInterfaceStyle:isDark?'dark':'light'});
 
   const createThreeButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
@@ -29,7 +31,7 @@ export const AlertScreen = () => {
         style: 'cancel',
       },
       {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
+    ],{cancelable:false,userInterfaceStyle:isDark?'dark':'light'});
 
     const onShowPrompt = () => {
       showPrompt({
@@ -42,6 +44,8 @@ export const AlertScreen = () => {
         promptType:'secure-text',
         defaultValue:'test',
         placeholder:'placeholder',
+      
+         
       })
      /*  prompt(
         'Enter password',

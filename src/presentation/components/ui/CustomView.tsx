@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { use, useContext } from 'react'
 import { View, Text, StyleProp, ViewStyle } from 'react-native'
 import { globalStyles } from '../../../config/theme/theme';
+import { ThemeContext } from '../../context/ThemeContext';
 
 type CustomViewProps = {
   style?:StyleProp<ViewStyle>
@@ -10,9 +11,11 @@ type CustomViewProps = {
   }
 
 export const CustomView = ({style,children,margin=false}:CustomViewProps) => {
+
+  const {colors}=useContext(ThemeContext)
 // render
   return (
-    <View style={[globalStyles.mainContainer,margin? globalStyles.globalMargin:null,style]} >
+    <View style={[globalStyles.mainContainer,margin? globalStyles.globalMargin:null,{backgroundColor:colors.background},style]} >
      {children}
     </View>
   )

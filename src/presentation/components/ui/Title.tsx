@@ -1,7 +1,8 @@
-import React, {use} from 'react';
-import {View, Text} from 'react-native';
-import {colors, globalStyles} from '../../../config/theme/theme';
+import React, {use, useContext} from 'react';
+import { Text} from 'react-native';
+import { globalStyles} from '../../../config/theme/theme';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 type TitleProps = {
@@ -12,6 +13,7 @@ type TitleProps = {
 
 export const Title = ({title, safe = false, white = false}: TitleProps) => {
   const {top} = useSafeAreaInsets();
+  const{colors}=useContext(ThemeContext)
   
   return (
     <Text

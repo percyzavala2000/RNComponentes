@@ -4,6 +4,7 @@ import {IconIcon} from '../../icons/IconIcon';
 import {globalStyles, colors} from '../../../config/theme/theme';
 import {Title} from '../../components/ui/Title';
 import {MenuItem} from '../../components/ui/MenuItem';
+import { CustomView } from '../../components/ui/CustomView';
 
 const uiMenuItems = [
   {
@@ -72,16 +73,16 @@ const menuItems = [
 export const HomeScreen = () => {
   // render
   return (
-    <View style={globalStyles.mainContainer}>
-      <View style={globalStyles.globalMargin}>
+    <CustomView margin>
+      
         <ScrollView>
           <Title title="Opciones de Menú" safe />
-          {uiMenuItems.map((item, index) => (
+          {animationMenuItems .map((item, index) => (
             <MenuItem
               key={index}
               {...item}
               isFirst={index === 0}
-              isLast={index === uiMenuItems.length - 1}
+              isLast={index === animationMenuItems .length - 1}
             />
           ))}
           <View style={{height: 30}} />
@@ -106,7 +107,7 @@ export const HomeScreen = () => {
          
           
         </ScrollView>
-      </View>
-    </View>
+    
+    </CustomView>
   );
 };

@@ -1,9 +1,12 @@
-import React, {useRef} from 'react';
+import React, {useContext, useRef} from 'react';
 import {View, Text, Animated, StyleSheet, PanResponder} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const Animation102Screen = () => {
   const pan = useRef(new Animated.ValueXY()).current;
+
+    const{colors}=useContext(ThemeContext)
   // methods
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -19,7 +22,7 @@ export const Animation102Screen = () => {
   });
   // render
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container,{backgroundColor:colors.background}]}>
       <Animated.View
         {...panResponder.panHandlers}
         style={[pan.getLayout(), styles.purpleBox]}

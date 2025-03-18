@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, StyleSheet, Switch, Platform } from 'react-native'
-import { colors } from '../../../config/theme/theme';
+import { ThemeContext } from '../../context/ThemeContext';
 
 type CustomSwichProps = {
   isOn:boolean;
@@ -9,10 +9,11 @@ type CustomSwichProps = {
 }
 
 export const CustomSwich = ({isOn,text,onChange}:CustomSwichProps) => {
+    const{colors}=useContext(ThemeContext)
 
 // render
   return (
-    <View style={styles.swichRow} >
+    <View style={[styles.swichRow,{backgroundColor:colors.cardBackground}]} >
       {
         text && <Text style={{color:colors.text}} >{text}</Text>
       }

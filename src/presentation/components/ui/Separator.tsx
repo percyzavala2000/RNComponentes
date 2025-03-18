@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, StyleProp, ViewStyle } from 'react-native'
-import { colors } from '../../../config/theme/theme';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { ThemeContext } from '../../context/ThemeContext';
 
 type SeparatorProps = {
   style?:StyleProp <ViewStyle>
@@ -10,6 +9,7 @@ type SeparatorProps = {
   }
 
 export const Separator = ({style}:SeparatorProps) => {
+    const{colors}=useContext(ThemeContext)
 // render
   return (
     <View style={{backgroundColor:colors.cardBackground}} >

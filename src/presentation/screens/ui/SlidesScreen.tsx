@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,10 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
-import {colors, globalStyles} from '../../../config/theme/theme';
+import { globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
 import { useNavigation } from '@react-navigation/native';
+import { ThemeContext } from '../../context/ThemeContext';
 
 interface Slide {
   title: string;
@@ -39,6 +40,7 @@ const items: Slide[] = [
 export const SlidesScreen = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const navigation=useNavigation();
+    const{colors}=useContext(ThemeContext)
 
   const flatListRef = useRef<FlatList>(null);
 
@@ -91,11 +93,12 @@ interface SlideItemProps {
 }
 const SlideItem = ({item}: SlideItemProps) => {
   const {width} = useWindowDimensions();
+    const{colors,currentTheme}=useContext(ThemeContext)
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.cardBackground,
         borderRadius: 5,
         padding: 40,
         justifyContent: 'center',
